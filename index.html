@@ -2,61 +2,12 @@
 <html>
   <body>
     <head>
-	    <style>
-		    
-body{
-  background: #000;
-  padding-top: 10px;
-} 
-
-p{
-  color: lime; 
-  font-family: "Courier";
-  font-size: 20px;
-  margin: 10px 0 0 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 30em;
-  animation: type 4s steps(60, end); 
-}
-
-p:nth-child(2){
-  animation: type2 8s steps(60, end);
-}
-
-p a{
-  color: lime;
-  text-decoration: none;
-}
-
-span{
-  animation: blink 1s infinite;
-}
-
-@keyframes type{ 
-  from { width: 0; } 
-} 
-
-@keyframes type2{
-  0%{width: 0;}
-  50%{width: 0;}
-  100%{ width: 100; } 
-} 
-
-@keyframes blink{
-  to{opacity: .0;}
-}
-
-::selection{
-  background: black;
-}
-		    </style>
+	    <link rel="stylesheet" href="styles.css">
+	    <script src="scripts.js"></script>
       </head>
-   <p>Hello World</p>
-<p>Hello World ♥ 
-  <a href="https://twitter.com/_ishaansharma" title="ishaansharma">@_ishaansharma</a> 
-:)<span>|</span></p> 
-	  <p>Hello World</p>
+   <span id="test"><noscript>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam illo nemo assumenda molestias in placeat impedit recusandae soluta atque vero fugit asperiores tempora ducimus itaque alias libero corrupti. Laborum sed! Adipisci minus aperiam ipsa accusamus maiores quae delectus excepturi nostrum consequuntur ea ullam eligendi quas quia voluptas porro officiis doloribus aspernatur animi.</noscript></span>
+
   </body>
+	
     </html>
   
