@@ -1,488 +1,413 @@
 <html>
 <head>
 	<style>
-		body {
-	font-family: "Roboto", sans-serif;
-	font-size: 1rem;
-	font-weight: 100;
-	line-height: 1.5;
-	color: #222;
-	background-color: #f5f5f5;
+		@import url(https://fonts.googleapis.com/css?family=Share+Tech);
+body {
+  background-color: #000;
 }
 
-a {
-	color: inherit;
-	text-decoration: none;
+h1 {
+  font-family: "Share Tech";
+  animation: pulse .9s infinite;
+  color: #00ebd4;
 }
 
-a:focus, a:hover {
-	color: inherit;
-	text-decoration: none;
+#identity-results, #resume, #loading-alpha-div, #loadingH1, #loadingMessage2, #message {
+  margin-top: 20px;
+  font-family: "Share Tech";
+  font-weight: 900;
+  font-size: 24px;
+  color: #00ebd4;
+  animation: pulse .9s infinite;
 }
 
-.jumbotron {
-	padding: 1rem 0.5rem;
-	margin-bottom: 1rem;
-	background-color: #e5eaee;
-	border-radius: 0.3rem;
+i {
+  font-size: 24px;
+  color: #00ebd4;
+  animation: pulse .9s infinite;
 }
 
-@media (min-width: 576px) {
-	.jumbotron {
-		padding: 2rem 1rem;
-	}
+.block {
+  width: 50px;
+  height: 50px;
+  background-color: #000;
 }
 
-.bg-dark {
-	background: #222;
-	font-weight: 300;
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.cursor:after {
+  content: "_";
+  opacity: 0;
+  animation: cursor 1s infinite;
 }
 
-.bg-dark p {
-	color: #636c72;
+.sign:before {
+  content: "> ";
 }
 
-.color-primary, .container h4 {
-	color: #00dcc6;
+@keyframes cursor {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+#loading-alpha-div, .img-div {
+  display: none;
 }
 
-.section {
-	padding: 5rem 0 0 0;
+img {
+  margin: 50px 0;
+  animation: pulse .9s infinite;
 }
 
-.small-hr {
-	background-color: #00dcc6;
-	width: 60%;
-	margin: 1rem 0 3rem 0;
+#loadingMessage2 {
+  display: none;
 }
 
-.custom-circle {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 1rem;
+.sub-item {
+  margin-top: 20px;
+  margin-left: 40px;
 }
 
-.wrapper {
-	margin: 0 auto;
-	border: 1px solid #939393;
-	border-radius: 2px;
-	box-shadow: 0 0 10px rgba(12, 3, 25, 0.8);
-}
-
-.main-section-container {
-	padding: 5rem 0;
-}
-
-.main-section-container .main-section {
-	padding: 8rem 0;
-}
-
-.flex-container {
-	display: initial;
-}
-
-@media (min-width: 768px) {
-	.flex-container {
-		display: -webkit-box;
-		display: -ms-flexbox;
-		display: flex;
-	}
-}
-
-.container h2 {
-	margin: 0 0 2rem 0;
-}
-
-.container h5 {
-	margin: 0.5rem 0;
-}
-
-.container p {
-	font-weight: 300;
-}
-
-.contact {
-	max-width: 60%;
-}
-
-@media (min-width: 768px) {
-	.contact {
-		max-width: 100%;
-	}
-}
-
-.contact p:nth-child(2) {
-	-ms-flex-preferred-size: auto;
-	flex-basis: auto;
-}
-
-@media (min-width: 992px) {
-	.contact p:nth-child(2) {
-		-ms-flex-preferred-size: 70%;
-		flex-basis: 70%;
-	}
-}
-
-.skill-unit {
-	max-width: 100%;
-	margin: 0 auto 30px auto;
-}
-
-.skill-unit .skill-bar {
-	max-width: 100%;
-	height: 10px;
-	background-color: #e5eaee;
-	position: relative;
-	border-radius: 5px;
-}
-
-.skill-unit .skill-amount {
-	position: absolute;
-	height: 100%;
-	background-color: #00dcc6;
-	border-radius: 5px;
-	width: 0;
-}
-
-.canvas {
-	border-radius: 50%;
-	background: #f5f5f5;
-	margin-top: 1rem;
-}
-@media (min-width: 768px) {
-	.canvas {
-		margin-top: 0;
-	}
-}
-
-.profile-section {
-	padding: 8rem 0.5rem;
-}
-
-.section-title {
-	padding-left: 0.5rem;
-}
-@media (min-width: 768px) {
-	.section-title {
-		padding-left: 1rem;
-	}
+.inline {
+  display: inline;
+  margin-left: 10px;
 }
 
 	</style>
 	<script>
-		/*
-Created on: 6/5/17
-Revised on: 6/29/17
-Name: animations.js
-By: Jesus Rodriguez
-Description: A script that triggers animations.
-*/
+		   var initDot = document.getElementById("loading");
+   var loading = setInterval(function() {
+       if(initDot.innerHTML.length == 5) {
+           initDot.innerHTML = "";
+       } else {
+           initDot.innerHTML += ".";
+       }
+   }, 350); // Dot Speed
 
-/* This jQuery file can take the following data attribues from html code: data-percent and data-id. The data-percent attribute determines the percentage of where the circle that is being drawn will stop its animation. In order to iterate through all elements at once, the data-id is passed in through the 'each' function of jQuery and is then referenced as the element's id. This was done in order to iterate through all canvas elements at once without explicitly stating the name of a single id. The canvas elements must have a class of '.canvas' in order for this to work.
-*/
-$(function() {
-	// Function that checks if a particular object has a particular class
-	function objectExists(object, objectClass) {
-		if (object.hasClass(objectClass)) {
-			return true;
-		}
-		return false; // For all other cases return false
-	}
-	// Variables that hold whether an animation has been played
-	var circleAnimationHasPlayed = false,
-		lineAnimationHasPlayed = false;
+   var $loadingMessage = $('#loadingH1');
+    
+   setTimeout(function() {
+         clearInterval(loading);
+         $loadingMessage.hide();
+      }, 1500);
+   
+   var initProgram = setTimeout(function(){
+       var greeting = "UNIDENTIFIED ORGANIC LIFEFORM DETECTED";
+       var message = "RUNNING CODEPEN RESUME PROTOCAL (CRP) FOR @GOTHBURZ";
+       var $identityDiv = $("#identity-results");
+       var $name = "NAME: PETRUS REX";
+       var $alias = "KNOWN ALIAS: PETRUSR3X"
+       var $occupation  = "OCCUPATION: FRONT END DEVELOPER | WORDPRESS DEVLOPER | DESIGNER";
+       var $frontEnd  = "FRONT END DEVELOPMENT CORE: HTML5 | CSS3 | JAVASCRIPT";
+         var $JSFrameworks = "JAVASCRIPT FRAMEWORKS: ANGULARJS";
+         var $JSLibs = "JAVASCRIPT LIBRARIES: JQUERY | D3 | C3";
+         var $CSSFrameworks = "CSS FRAMEWORKS: BOOTSTRAP | SEMANTIC UI";
+         var $CSSPre = "CSS PREPROCESSORS: SASS | LESS | STYLUS";
+         var $frontEndAnimation = "FRONT END ANIMATION: CANVAS | HTML5 | SVG";
+       var $cmsDevelopment = "WORDPRESS DEVELOPMENT: WORDPRESS";
+         var $wordpress = "WORDPRESS: CUSTOM THEMING | PLUGINS";
+       var $design = "DESIGN CORE: ADOBE SUITE";
+         var $webDesign = "WEB DESIGN: INDESIGN CC | MUSE CC";
+         var $branding = "ILLUSTRATIONS & BRANDING: ILLUSTRATOR CC | PHOTOSHOP CC";
+         var $designAnimation = "ANIMATION DESIGN: AFTER EFFECTS CC | FLASH CC";
+         
+      function initIdentityResults(i){
+          $("#message").addClass("sign cursor").text(message.substring(0, i));
+            if(i < message.length){
+                setTimeout(function(){
+                    initIdentityResults(i + 1);
+                }, 35);   
+            }else{
+               $('#message').removeClass("cursor");
+               var loadingResume = function(){
+                     $("#loadingMessage2").show()
+                     var dotAlpha = document.getElementById("alpha-loading");
+                     var loadingAlpha = setInterval(function() {
+                      if(dotAlpha.innerHTML.length == 6) {
+                          dotAlpha.innerHTML = "";
+                      } else {
+                          dotAlpha.innerHTML += ".";
+                          setTimeout(function() {
+                              clearInterval(loadingAlpha);
+                              $("#loadingMessage2").hide();
+                           }, 2000);
+                      }
+                  }, 350);  // Dot Speed
+               }
+               loadingResume();
+               function initName(i){
+                  $("#name").addClass("sign cursor").text($name.substring(0, i));
+                     if(i < $name.length){
+                        setTimeout(function(){
+                           initName(i + 1);   
+                        }, 35);
+                     }else{
+                        $("#name").removeClass("cursor");
+                        setTimeout(function() {
+                           initAlias(0);
+                        }, 1500);      
+                     }
+               }
+               setTimeout(function() {
+                  initName(0);
+               }, 2500);
+            }
+            function initAlias(i){
+                  $("#alias").addClass("sign cursor").text($alias.substring(0, i));
+                     if(i < $alias.length){
+                        setTimeout(function(){
+                           initAlias(i + 1);   
+                        }, 35);
+                     }else{
+                        $("#alias").removeClass("cursor");
+                        setTimeout(function() {
+                           initOccupation(0);
+                        }, 1500);
+                     }
+            }
+            function initOccupation(i){
+               $("#occupation").addClass("sign cursor").text($occupation.substring(0, i));
+                     if(i < $occupation.length){
+                        setTimeout(function(){
+                           initOccupation(i + 1);   
+                        }, 35);
+                     }else{
+                        $("#occupation").removeClass("cursor");
+                        setTimeout(function() {
+                           initFrontEnd(0);
+                        }, 1500);
+                     }
+            }
+            function initFrontEnd(i){
+               $('#front-end-span').addClass('fa fa-wrench');
+               $('#front-end').addClass("cursor").text($frontEnd.substring(0, i));
+                  if(i < $frontEnd.length){
+                     setTimeout(function(){
+                        initFrontEnd(i + 1);  
+                     }, 35);
+                  }else{
+                     $('#front-end').removeClass("cursor");
+                        setTimeout(function() {
+                           initJSFrameworks(0);
+                        }, 1500);
+                  }
+            }
+            function initJSFrameworks(i){
+               $('#js-frameworks').addClass("sign cursor").text($JSFrameworks.substring(0, i));
+                  if(i < $JSFrameworks.length){
+                     setTimeout(function(){
+                         initJSFrameworks(i + 1);  
+                     }, 35);
+                  }else{
+                     $('#js-frameworks').removeClass("cursor");
+                        setTimeout(function() {
+                           initJSLibs(0);
+                        }, 1500);
+                  }
+            }
+            function initJSLibs(i){
+               $('#js-libs').addClass("sign cursor").text($JSLibs.substring(0, i));
+                  if(i < $JSLibs.length){
+                     setTimeout(function(){
+                         initJSLibs(i + 1);  
+                     }, 35);
+                  }else{
+                     $('#js-libs').removeClass("cursor");
+                        setTimeout(function() {
+                           initCSSFrameworks(0);
+                        }, 1500);
+                  }
+            }
+            function initCSSFrameworks(i){
+               $('#css-frameworks').addClass("sign cursor").text($CSSFrameworks.substring(0, i));
+                  if(i < $CSSFrameworks.length){
+                     setTimeout(function(){
+                         initCSSFrameworks(i + 1);  
+                     }, 35);
+                  }else{
+                     $('#css-frameworks').removeClass("cursor");
+                     setTimeout(function() {
+                           initCSSPre(0);
+                        }, 1500);
+                  }
+            }
+             function initCSSPre(i){
+               $('#css-pre').addClass("sign cursor").text($CSSPre.substring(0, i));
+                  if(i < $CSSPre.length){
+                     setTimeout(function(){
+                         initCSSPre(i + 1);  
+                     }, 35);
+                  }else{
+                     $('#css-pre').removeClass("cursor");
+                     setTimeout(function() {
+                           initFrontEndAnimation(0);
+                        }, 1500);
+                  }
+            }
+            function initFrontEndAnimation(i){
+               $('#front-end-animation').addClass("sign cursor").text($frontEndAnimation.substring(0, i));
+                  if(i < $frontEndAnimation.length){
+                     setTimeout(function(){
+                         initFrontEndAnimation(i + 1);  
+                     }, 35);
+                  }else{
+                     $('#front-end-animation').removeClass("cursor");
+                     setTimeout(function() {
+                           initCMSDevelopment(0);
+                        }, 1500);
+                  }
+            }
+            function initCMSDevelopment(i){
+               $('#cms-span').addClass("fa fa-wordpress")
+               $('#CMS-development').addClass("cursor").text($cmsDevelopment.substring(0, i));
+                  if(i < $cmsDevelopment.length){
+                     setTimeout(function(){
+                         initCMSDevelopment(i + 1);  
+                     }, 35);
+                  }else{
+                     $('#CMS-development').removeClass("cursor");
+                     setTimeout(function() {
+                           initWordpress(0);
+                        }, 1500);
+                  }
+            }
+            function initWordpress(i){
+               $('#wordpress').addClass("sign cursor").text($wordpress.substring(0, i));
+                  if(i < $wordpress.length){
+                     setTimeout(function(){
+                         initWordpress(i + 1);  
+                     }, 35);
+                  }else{
+                     $('#wordpress').removeClass("cursor");
+                     setTimeout(function() {
+                           initDesign(0);
+                        }, 1500);
+                  }
+            }
+             function initDesign(i){
+               $('#design-span').addClass('fa fa-paint-brush');
+               $('#design').addClass("cursor").text($design.substring(0, i));
+                  if(i < $design.length){
+                     setTimeout(function(){
+                         initDesign(i + 1);  
+                     }, 35);
+                  }else{
+                     $('#design').removeClass("cursor");
+                     setTimeout(function() {
+                           initWebDesign(0);
+                        }, 1500);
+                  }
+            }
+            function initWebDesign(i){
+               $('#web-design').addClass("sign cursor").text($webDesign.substring(0, i));
+                  if(i < $webDesign.length){
+                     setTimeout(function(){
+                         initWebDesign(i + 1);  
+                     }, 35);
+                  }else{
+                     $('#web-design').removeClass("cursor");
+                     setTimeout(function() {
+                           initBranding(0);
+                        }, 1500);
+                  }
+            }
+            function initBranding(i){
+               $('#branding').addClass("sign cursor").text($branding.substring(0, i));
+                  if(i < $branding.length){
+                     setTimeout(function(){
+                         initBranding(i + 1);  
+                     }, 35);
+                  }else{
+                     $('#branding').removeClass("cursor");
+                     setTimeout(function() {
+                           initDesignAnimation(0);
+                        }, 1500);
+                  }
+            }
+            function initDesignAnimation(i){
+               $('#design-animation').addClass("sign cursor").text($designAnimation.substring(0, i));
+                  if(i < $designAnimation.length){
+                     setTimeout(function(){
+                         initDesignAnimation(i + 1);  
+                     }, 35);
+                  }else{
+                     //$('#design-animation').removeClass("cursor");
+                  }
+            }
+         }
+         
+      function initProgramAlpha(i){
+          $("#greeting").addClass("cursor").text(greeting.substring(0, i));
+            if(i < greeting.length){
+                setTimeout(function(){
+                    initProgramAlpha(i + 1);
+                }, 35);   
+            }else{
+               $("#greeting").removeClass("cursor");
+               initIdentityResults(0);
+            }
+         }
+         initProgramAlpha(0)
+   
+   }, 1500);
 
-	// The objectExists function was made so either animation could be played without the other having to exist.
-	if (objectExists($("canvas"), "canvas")) {
-		// If the animation has not played, do the following
-		if (!circleAnimationHasPlayed) {
-			/* The varaible is declared true after the animation has begun. */
-			circleAnimationHasPlayed = true;
-			// Will iterate through each class of canvas
-			$(".canvas").each(function() {
-				// Init vars
-				var $this = $(this), /* This refers to the object, however 'this' cannot be used to obtain information from the object relatable to the canvas      											    element, because of the way that jQuery works */
-					id_name = $this.data("id"), /* In order to iterate across all elements at once, an individual id tag is not referenced, instead a data element  														    is used to obtain that information*/
-					canvas = document.getElementById(id_name), // Get the according element by the id name that was obtained in the data-id in the html
-					paintbrush = canvas.getContext("2d"), // Obtain the canvas information
-					amount_loaded = 0, // The amount of percentage that has been loaded into the canvas
-					percentage = $this.data("percent"), /* 'this' is used to obtain data information regarding the data-percent the user has coded in the html 																				document. */
-					start_point = 4.72, // The point in which the animation will begin playing
-					canvas_width = canvas.width, // Gets the canvas width
-					canvas_height = canvas.height, // Gets the canvas height
-					difference; // Difference will be used later to compare against the amount loaded.
+initProgram()
 
-				function progress() {
-					difference = (amount_loaded / 100 * Math.PI * 2 * 10).toFixed(2); // Math, you tell me what this does, no clue
-					paintbrush.clearRect(0, 0, canvas_width, canvas_height); // To avoid odd animations
-					paintbrush.lineWidth = 8; // The width of the line that will be drawn
-					paintbrush.lineCap = "round"; // Round off that line
-					paintbrush.fillStyle = "#222"; // Color for the text in the middle
-					paintbrush.strokeStyle = "#00dcc6"; // Color for the actual circle being drawn
-					paintbrush.textAlign = "center"; // Aligning the text within the canvas
-					paintbrush.font = "24px Roboto"; // A font size and font style must be present for proper styling
-					paintbrush.fillText(
-						amount_loaded + "%",
-						canvas_width / 2,
-						canvas_height / 1.8
-					); // Dynamic text that is positioned center within the canvas
-					paintbrush.beginPath(); // The path that will be drawn
-					paintbrush.arc(
-						canvas_width / 2,
-						canvas_height / 2,
-						canvas_height / 2.1,
-						start_point,
-						difference / 10 + start_point,
-						false
-					); // The starting point and arc of the drawing
-					paintbrush.stroke(); // Begin drawing
 
-					/* If the amount loaded is less than the percentage user defined variable from the html document, 
-					   then the amount loaded will increase until it is. */
-					if (amount_loaded < percentage) {
-						amount_loaded++;
-					} else {
-						clearTimeout(progressEvent);
-						// Other functions can be triggered after the animation stops in this case nothing else is necessary. Custom functions can go here.
-					}
-				}
-				/* The progress event is an interval that will make the percent animation and circle drawing
-               play smoothly. It is important to note that the lower the number, the faster
-               the animation will play. */
-				var progressEvent = setInterval(progress, 30);
-			});
-		}
-	}
-	// Animation for the width of the skills
-	if (objectExists($("div"), "skill-unit")) {
-		if (!lineAnimationHasPlayed) {
-			// The varaible is declared true after the animation has begun. */
-			lineAnimationHasPlayed = true;
-
-			/* Select all skill-amount objects and increase by the skill amount target attribute
-           specified in the html document */
-			$(".skill-amount").each(function() {
-				// Data target attribute in html document called 'data-skill'
-				var skillAmount = $(this).data("skill");
-
-				// jQuery animate function
-				$(this).animate(
-					{
-						width: skillAmount + "%"
-					},
-					1000
-				);
-			});
-		}
-	}
-});
 
 	</script>
 </head>
 <body>
-<div class="main-section-container">
- <div class="container wrapper">
-  <div class="row">
-   <div class="col-sm-12 col-md-3 bg-dark">
-    <div class="profile-section">
-     <img class="img-fluid custom-circle rounded-circle" src="https://d3iw72m71ie81c.cloudfront.net/male-55.jpg" alt="Profile Picture">
-     <h3 class="color-primary font-weight-normal">John Doe Smith</h3>
-     <h5 class="text-muted">Web Developer</h5>
-     <hr class="small-hr">
-     <h4><i class="fa fa-user-circle-o" aria-hidden="true"></i> About</h4>
-     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati in blanditiis mollitia hic.</p>
-     <hr class="small-hr">
-     <h4><i class="fa fa-address-card" aria-hidden="true"></i> Contact</h4>
-     <div class="contact">
-      <div class="d-flex justify-content-between flex-wrap">
-       <p>Address:</p>
-       <p>618 Nonesuch Road <br> No Where, CA 94116</p>
+<div class="container">
+   <h1 id="loadingH1"><span><i class="fa fa-cogs"></i></span> RUNNING IDENTITY PROTOCOL<span id="loading">.</span></h1>
+   <div class="img-container">
+      <div id="identity-results">
+         <h1 id="greeting"></h1>
+         <p id="message"></p>
       </div>
-      <div class="d-flex justify-content-between flex-wrap">
-       <p>Phone:</p>
-       <p>(999) 999-5555</p>
+         <h3 id="loadingMessage2">LOADING RESUME<span id="alpha-loading"></span>.</h3>
       </div>
-      <div class="d-flex justify-content-between flex-wrap">
-       <p class="mb-0">Email:</p>
-       <p class="mb-0"><a href="mailto:email@example.com">email@example.com</a></p>
+      <div id="resume">
+         <h3 id="name"></h3>
+         <h3 id="alias"></h3> 
+         <h3 id="occupation"></h3>
+         <br>
+         <i id="front-end-span"></i><h3 id="front-end" class="inline"></h3>
+            <h4 id="js-frameworks" class="sub-item"></h4>
+            <h4 id="js-libs" class="sub-item"></h4>
+            <h4 id="css-frameworks" class="sub-item"></h4>
+            <h4 id="css-pre" class="sub-item"></h4>
+            <h4 id="front-end-animation" class="sub-item"></h4>
+         <br>
+         <i id="cms-span"></i><h3 id="CMS-development" class="inline"></h3>
+            <h4 id="wordpress" class="sub-item"></h4>
+         <br>
+         <i id="design-span"></i><h3 id="design" class="inline"></h3>
+            <h4 id="web-design" class="sub-item"></h4>
+            <h4 id="branding" class="sub-item"></h4>
+            <h4 id="design-animation" class="sub-item"></h4>
       </div>
-     </div>
-     <hr class="small-hr">
-     <h4><i class="fa fa-users" aria-hidden="true"></i> References</h4>
-     <p>Available upon request.</p>
-     <hr class="small-hr">
-     <h4><i class="fa fa-paper-plane" aria-hidden="true"></i> Interests</h4>
-     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat ad, quisquam. Ad amet itaque architecto quisquam blanditiis dolor ab, quae rem.</p>
-     <hr class="small-hr">
-     <h4><i class="fa fa-at" aria-hidden="true"></i> Connect</h4>
-     <ul class="list-unstyled text-muted">
-      <li><a href="#"><i class="fa fa-codepen" aria-hidden="true"></i> Codepen</a></li>
-      <li><a href="#"><i class="fa fa-github" aria-hidden="true"></i> Github</a></li>
-      <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a></li>
-      <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
-     </ul>
-    </div>
-    <!-- /.profile-section -->
-   </div>
-   <!-- /.col-3 -->
-
-   <div class="col-sm-12 col-md-9">
-    <div class="main-section">
-     <div class="skill-section">
-      <h2 class="section-title">Skills:</h2>
-      <div class="flex-container">
-       <div class="col-sm-12 col-md-6">
-        <div class="skill-unit">
-         <div class="skill-label">
-          <p>Communication</p>
-         </div>
-         <div class="skill-bar">
-          <div class="skill-amount" data-skill="50"></div>
-         </div>
-        </div>
-        <div class="skill-unit">
-         <div class="skill-label">
-          <p>Organization</p>
-         </div>
-         <div class="skill-bar">
-          <div class="skill-amount" data-skill="60"></div>
-         </div>
-        </div>
-        <div class="skill-unit">
-         <div class="skill-label">
-          <p>Learning</p>
-         </div>
-         <div class="skill-bar">
-          <div class="skill-amount" data-skill="80"></div>
-         </div>
-        </div>
-        <div class="skill-unit">
-         <div class="skill-label">
-          <p>Teaching</p>
-         </div>
-         <div class="skill-bar">
-          <div class="skill-amount" data-skill="75"></div>
-         </div>
-        </div>
-       </div>
-       <div class="col-sm-12 col-md-6">
-        <div class="skill-unit">
-         <div class="skill-label">
-          <p>Planning</p>
-         </div>
-         <div class="skill-bar">
-          <div class="skill-amount" data-skill="45"></div>
-         </div>
-        </div>
-        <div class="skill-unit">
-         <div class="skill-label">
-          <p>Visual Design</p>
-         </div>
-         <div class="skill-bar">
-          <div class="skill-amount" data-skill="50"></div>
-         </div>
-        </div>
-        <div class="skill-unit">
-         <div class="skill-label">
-          <p>UX Design</p>
-         </div>
-         <div class="skill-bar">
-          <div class="skill-amount" data-skill="35"></div>
-         </div>
-        </div>
-        <div class="skill-unit">
-         <div class="skill-label">
-          <p>Programming</p>
-         </div>
-         <div class="skill-bar">
-          <div class="skill-amount" data-skill="99"></div>
-         </div>
-        </div>
-       </div>
-      </div>
-      <!-- /.d-flex -->
-     </div>
-     <!-- /.skill-section -->
-
-     <!-- Second section -->
-     <div class="education-section">
-      <div class="jumbotron">
-       <h2>Education:</h2>
-       <div class="flex-container text-center">
-        <div class="col-sm-12 col-md-4">
-         <canvas class="canvas" id="canvas1" data-percent="100" data-id="canvas1" width="150" height="150"></canvas>
-         <div class="astonish" data-animation="fadeInRight">
-          <h5>2012 <br>General Education</h5>
-          <h6>High School</h6>
-         </div>
-        </div>
-        <div class="col-sm-12 col-md-4">
-         <canvas class="canvas" id="canvas2" data-percent="75" data-id="canvas2" width="150" height="150"></canvas>
-         <div class="astonish" data-animation="fadeInLeft">
-          <h5>2015 <br>Information Technology Software Development</h5>
-          <h6>Community College</h6>
-         </div>
-        </div>
-        <div class="col-sm-12 col-md-4">
-         <canvas class="canvas" id="canvas3" data-percent="80" data-id="canvas3" width="150" height="150"></canvas>
-         <div class="astonish" data-animation="fadeInRight">
-          <h5>2017 <br>Information Technology Web Technologies</h5>
-          <h6>Community College</h6>
-         </div>
-        </div>
-       </div>
-       <!-- /.d-flex -->
-      </div>
-      <!-- /.jumbotron -->
-     </div>
-     <!-- /.education-section -->
-
-     <div class="work-section">
-      <h2 class="section-title">Work Experience:</h2>
-      <div class="col-12">
-       <div class="work">
-        <div class="d-flex justify-content-between">
-         <h5>Web Solutions Specialist</h5>
-         <h5>2016 - Present</h5>
-        </div>
-        <ul>
-         <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-         <li>Illo odit totam, quaerat numquam dolor, praesentium perferendis sunt magnam.</li>
-         <li> consequuntur optio odio nam vitae, labore architecto magni et libero officiis culpa.</li>
-        </ul>
-        <div class="d-flex justify-content-between">
-         <h5>Lorem Sales Supervisor</h5>
-         <h5>2014 - 2016</h5>
-        </div>
-        <ul>
-         <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-         <li>Illo odit totam, quaerat numquam dolor, praesentium perferendis sunt magnam.</li>
-         <li> consequuntur optio odio nam vitae, labore architecto magni et libero officiis culpa.</li>
-        </ul>
-        <div class="d-flex justify-content-between">
-         <h5>Lorem Sales Associate</h5>
-         <h5>2012 - 2014</h5>
-        </div>
-        <ul>
-         <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-         <li>Illo odit totam, quaerat numquam dolor, praesentium perferendis sunt magnam.</li>
-         <li> consequuntur optio odio nam vitae, labore architecto magni et libero officiis culpa.</li>
-        </ul>
-       </div>
-      </div>
-      <!-- /.col-12 -->
-     </div>
-     <!-- /.work-section -->
-    </div>
-    <!-- /.section -->
-   </div>
-   <!-- /.col-9 -->
-  </div>
-  <!-- /.row -->
- </div>
- <!-- /.container -->
 </div>
-<!-- /.main-section-container -->
 </body>
 </html>
