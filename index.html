@@ -1,456 +1,488 @@
 <html>
 <head>
 	<style>
-		/**********************************
-GENERAL
-***********************************/
-#layout{
-  
-  max-width: 940px;
-  margin: auto;
-  padding: 0 15%;
-  display: block;
-  position: relative;
-  
-}
-
-body {
-  font-family: 'Lato', sans-serif;
-}
-
-#wrapper {
-  max-width: 940px;
-  margin: 0 auto;
-  padding: 0 5%;
-
+		body {
+	font-family: "Roboto", sans-serif;
+	font-size: 1rem;
+	font-weight: 100;
+	line-height: 1.5;
+	color: #222;
+	background-color: #f5f5f5;
 }
 
 a {
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
-img {
-  max-width: 100%;
+a:focus, a:hover {
+	color: inherit;
+	text-decoration: none;
 }
 
-h3 {
-  margin: 0 0 1em 0;
+.jumbotron {
+	padding: 1rem 0.5rem;
+	margin-bottom: 1rem;
+	background-color: #e5eaee;
+	border-radius: 0.3rem;
 }
 
-/**********************************
-HEADING
-***********************************/
-
-header {
-  float: left;
-  margin: 0 0 30px 0;
-  padding: 5px 0 0 0;
-  width: 100%;
+@media (min-width: 576px) {
+	.jumbotron {
+		padding: 2rem 1rem;
+	}
 }
 
-#logo {
-  text-align: center;
-  margin: 0;
+.bg-dark {
+	background: #222;
+	font-weight: 300;
 }
 
-h1 {
-  font-family: 'Lato', sans-serif;
-  margin: 15px 0;
-  font-size: 1.75em;
-  font-weight: normal;
-  line-height: 0.8em;
+.bg-dark p {
+	color: #636c72;
 }
 
-h2 {
-  font-size: 0.75em;
-  margin: -5px 0 0;
-  font-weight: normal;
+.color-primary, .container h4 {
+	color: #00dcc6;
 }
 
-#aiimg{
-  
-  width: 160px;
-  height: 160px;
-  position: absolute;
-  top: 335px;
-  left: 345px;
-  z-index: 3; /* integer */
+.section {
+	padding: 5rem 0 0 0;
 }
 
-#computerimg{
-  
-  width: 650px;
-  height: 460px;
-  z-index: 3; /* integer */
-  position: absolute;
-  top: 100px;
-  left: 300px;
-
+.small-hr {
+	background-color: #00dcc6;
+	width: 60%;
+	margin: 1rem 0 3rem 0;
 }
 
-#baseimg{
-  
-  width: 250px;
-  height: 100px;
-  position: absolute;
-  top: 560px;
-  left: 500px;
-  z-index: 3; /* integer */
+.custom-circle {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 1rem;
 }
 
-
-
-#screenimg{
-  
-  width: 650px;
-  height: 300px;
-  position: absolute;
-  top: 260px;
-  left: 300px;
-  z-index: 2; /* integer */
+.wrapper {
+	margin: 0 auto;
+	border: 1px solid #939393;
+	border-radius: 2px;
+	box-shadow: 0 0 10px rgba(12, 3, 25, 0.8);
 }
 
-
-#bucketimg{
-  
-  width: 190px;
-  height: 190px;
-  position: absolute;
-  top: 361px;
-  left: 550px;
-  z-index: 3; /* integer */
+.main-section-container {
+	padding: 5rem 0;
 }
 
-
-#pencilimg{
-  
-  width: 50px;
-  height: 205px;
-  position: absolute;
-  top: 346px;
-  left: 830px;
-  z-index: 3; /* integer */
+.main-section-container .main-section {
+	padding: 8rem 0;
 }
 
-#rulerimg{
-  
-  width: 300px;
-  height: 44px;
-  position: absolute;
-  top: 270px;
-  left: 630px;
-  z-index: 3; /* integer */
+.flex-container {
+	display: initial;
 }
 
-#codeboximg{
-  
-  width: 225px;
-  height: 175px;
-  position: absolute;
-  top: 126px;
-  left: 371px;
-  z-index: 3; /* integer */
+@media (min-width: 768px) {
+	.flex-container {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+	}
 }
 
-#pipeimg{
-  
-  width: 130px;
-  height: 135px;
-  position: absolute;
-  top: 109px;
-  left: 730px;
-  z-index: 3; /* integer */
+.container h2 {
+	margin: 0 0 2rem 0;
 }
 
-#stickyimg{
-  
-  width: 130px;
-  height: 135px;
-  position: absolute;
-  top: 569px;
-  left: 60px;
-  z-index: 3; /* integer */
+.container h5 {
+	margin: 0.5rem 0;
 }
 
-#clockimg{
-  
-  width: 120px;
-  height: 115px;
-  position: absolute;
-  top: 639px;
-  left: 300px;
-  z-index: 3; /* integer */
+.container p {
+	font-weight: 300;
 }
 
-#phoneimg{
-  
-  width: 110px;
-  height: 115px;
-  position: absolute;
-  top: 655px;
-  left: 810px;
-  z-index: 3; /* integer */
-
+.contact {
+	max-width: 60%;
 }
 
-#calcimg{
-  
-  width: 110px;
-  height: 140px;
-  position: absolute;
-  top: 590px;
-  left: 1050px;
-  z-index: 3; /* integer */
-  
+@media (min-width: 768px) {
+	.contact {
+		max-width: 100%;
+	}
 }
 
-#deskimg{
-  
-  width: 100%;
-  height: 390px;
-  position: absolute;
-  top: 509px;
-  left: 0px;
-   z-index: 1; /* integer */
+.contact p:nth-child(2) {
+	-ms-flex-preferred-size: auto;
+	flex-basis: auto;
 }
 
-
-
-/**********************************
-NAVIGATION
-***********************************/
-
-nav {
-  text-align: center;
-  padding: 10px 0;
-  margin: 20px 0 0;
+@media (min-width: 992px) {
+	.contact p:nth-child(2) {
+		-ms-flex-preferred-size: 70%;
+		flex-basis: 70%;
+	}
 }
 
-nav ul {
-  list-style: none;
-  margin: 0 10px;
-  padding: 0;
+.skill-unit {
+	max-width: 100%;
+	margin: 0 auto 30px auto;
 }
 
-nav li {
-  display: inline-block;
+.skill-unit .skill-bar {
+	max-width: 100%;
+	height: 10px;
+	background-color: #e5eaee;
+	position: relative;
+	border-radius: 5px;
 }
 
-nav a {
-  font-weight: 800;
-  padding: 15px 10px;
+.skill-unit .skill-amount {
+	position: absolute;
+	height: 100%;
+	background-color: #00dcc6;
+	border-radius: 5px;
+	width: 0;
 }
 
-
-
-
-/**********************************
-COLORS
-***********************************/
-
-/* site body */
-body {
-background-color: #B5E4F6;
-  color: #999;
+.canvas {
+	border-radius: 50%;
+	background: #f5f5f5;
+	margin-top: 1rem;
+}
+@media (min-width: 768px) {
+	.canvas {
+		margin-top: 0;
+	}
 }
 
-/* header */
-header {
-  background: #B5E4F6;
+.profile-section {
+	padding: 8rem 0.5rem;
 }
 
-/* nav background on mobile */
-nav {
-  background: #B5E4F6;
+.section-title {
+	padding-left: 0.5rem;
 }
-
-/* logo text */
-h1, h2 {
-  color: #fff;
-}
-
-/* links */
-a {
-  color: #6ab47b;
-}
-
-/* nav link */
-nav a, nav a:visited {
-  color: #fff;
-}
-
-/* selected nav link */
-nav a.selected, nav a:hover {
-  
-}
-
-
-/**********************************
-MEDIA QUERIES
-***********************************/
-
-@media screen and (min-width: 480px) {
-  
-  /**********************************
-  TWO COLUMN LAYOUT
-  ***********************************/
-  
-  #primary {
-    width: 50%;
-    float: left;
-  }
-  
-  #secondary {
-    width: 40%;
-    float: right;
-  }
-  
-
-  
-  /**********************************
-  PAGE: PORTFOLIO
-  ***********************************/
-  
-  #gallery li {
-    width: 28.3333%;
-  }
-  
-  #gallery li:nth-child(4n) {
-    clear: left;
-  }
-  
-@media screen and (min-width: 660px) {
-
-  /**********************************
-  HEADER
-  ***********************************/
-
-  nav {
-    background: none;
-    float: right;
-    font-size: 1.125em;
-    margin-right: 5%;
-    text-align: right;
-    width: 45%;
-  }
-  
-  #logo {
-    float: left;
-    margin-left: 5%;
-    text-align: left;
-    width: 45%;
-  }
-  
-  h1 {
-    font-size: 2em;
-  }
-  
-  h2 {
-    font-size: 0.825em;
-    margin-bottom: 20px;
-  }
-  
-  header {
- 
-    margin-bottom: 60px;
-  }
-
-  
+@media (min-width: 768px) {
+	.section-title {
+		padding-left: 1rem;
+	}
 }
 
 	</style>
 	<script>
-		var pen = document.getElementById("pencilimg");
+		/*
+Created on: 6/5/17
+Revised on: 6/29/17
+Name: animations.js
+By: Jesus Rodriguez
+Description: A script that triggers animations.
+*/
 
-$(document).ready(function(){
-    $(pen).click(function(){
-        $(pen).addClass("animated rollIn");
-    });
+/* This jQuery file can take the following data attribues from html code: data-percent and data-id. The data-percent attribute determines the percentage of where the circle that is being drawn will stop its animation. In order to iterate through all elements at once, the data-id is passed in through the 'each' function of jQuery and is then referenced as the element's id. This was done in order to iterate through all canvas elements at once without explicitly stating the name of a single id. The canvas elements must have a class of '.canvas' in order for this to work.
+*/
+$(function() {
+	// Function that checks if a particular object has a particular class
+	function objectExists(object, objectClass) {
+		if (object.hasClass(objectClass)) {
+			return true;
+		}
+		return false; // For all other cases return false
+	}
+	// Variables that hold whether an animation has been played
+	var circleAnimationHasPlayed = false,
+		lineAnimationHasPlayed = false;
+
+	// The objectExists function was made so either animation could be played without the other having to exist.
+	if (objectExists($("canvas"), "canvas")) {
+		// If the animation has not played, do the following
+		if (!circleAnimationHasPlayed) {
+			/* The varaible is declared true after the animation has begun. */
+			circleAnimationHasPlayed = true;
+			// Will iterate through each class of canvas
+			$(".canvas").each(function() {
+				// Init vars
+				var $this = $(this), /* This refers to the object, however 'this' cannot be used to obtain information from the object relatable to the canvas      											    element, because of the way that jQuery works */
+					id_name = $this.data("id"), /* In order to iterate across all elements at once, an individual id tag is not referenced, instead a data element  														    is used to obtain that information*/
+					canvas = document.getElementById(id_name), // Get the according element by the id name that was obtained in the data-id in the html
+					paintbrush = canvas.getContext("2d"), // Obtain the canvas information
+					amount_loaded = 0, // The amount of percentage that has been loaded into the canvas
+					percentage = $this.data("percent"), /* 'this' is used to obtain data information regarding the data-percent the user has coded in the html 																				document. */
+					start_point = 4.72, // The point in which the animation will begin playing
+					canvas_width = canvas.width, // Gets the canvas width
+					canvas_height = canvas.height, // Gets the canvas height
+					difference; // Difference will be used later to compare against the amount loaded.
+
+				function progress() {
+					difference = (amount_loaded / 100 * Math.PI * 2 * 10).toFixed(2); // Math, you tell me what this does, no clue
+					paintbrush.clearRect(0, 0, canvas_width, canvas_height); // To avoid odd animations
+					paintbrush.lineWidth = 8; // The width of the line that will be drawn
+					paintbrush.lineCap = "round"; // Round off that line
+					paintbrush.fillStyle = "#222"; // Color for the text in the middle
+					paintbrush.strokeStyle = "#00dcc6"; // Color for the actual circle being drawn
+					paintbrush.textAlign = "center"; // Aligning the text within the canvas
+					paintbrush.font = "24px Roboto"; // A font size and font style must be present for proper styling
+					paintbrush.fillText(
+						amount_loaded + "%",
+						canvas_width / 2,
+						canvas_height / 1.8
+					); // Dynamic text that is positioned center within the canvas
+					paintbrush.beginPath(); // The path that will be drawn
+					paintbrush.arc(
+						canvas_width / 2,
+						canvas_height / 2,
+						canvas_height / 2.1,
+						start_point,
+						difference / 10 + start_point,
+						false
+					); // The starting point and arc of the drawing
+					paintbrush.stroke(); // Begin drawing
+
+					/* If the amount loaded is less than the percentage user defined variable from the html document, 
+					   then the amount loaded will increase until it is. */
+					if (amount_loaded < percentage) {
+						amount_loaded++;
+					} else {
+						clearTimeout(progressEvent);
+						// Other functions can be triggered after the animation stops in this case nothing else is necessary. Custom functions can go here.
+					}
+				}
+				/* The progress event is an interval that will make the percent animation and circle drawing
+               play smoothly. It is important to note that the lower the number, the faster
+               the animation will play. */
+				var progressEvent = setInterval(progress, 30);
+			});
+		}
+	}
+	// Animation for the width of the skills
+	if (objectExists($("div"), "skill-unit")) {
+		if (!lineAnimationHasPlayed) {
+			// The varaible is declared true after the animation has begun. */
+			lineAnimationHasPlayed = true;
+
+			/* Select all skill-amount objects and increase by the skill amount target attribute
+           specified in the html document */
+			$(".skill-amount").each(function() {
+				// Data target attribute in html document called 'data-skill'
+				var skillAmount = $(this).data("skill");
+
+				// jQuery animate function
+				$(this).animate(
+					{
+						width: skillAmount + "%"
+					},
+					1000
+				);
+			});
+		}
+	}
 });
-
-var pipe = document.getElementById("pipeimg");
-
-$(document).ready(function(){
-    $(pipe).click(function(){
-        $(pipe).addClass("animated rollIn");
-    });
-});
-
-var bucket = document.getElementById("bucketimg");
-
-$(document).ready(function(){
-    $(bucket).click(function(){
-        $(bucket).addClass("animated rollIn");
-    });
-});
-
 
 	</script>
 </head>
 <body>
-<!-- Invite me to Dribble: https://dribbble.com/mikemang
-Get this on GitHub: https://github.com/michaelmang/Interactive-Resume-->
-<header>
-  <a href="https://codepen.io/mikemang/#hireme" id="logo">
-    <h1 class="animated slideInLeft">michael mangialardi</h1>
-  </a>
-  <nav>
-    <ul class="animated slideInRight">
-   
-      <li><a href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/mike_mangialardi_resume.pdf" download>resume</a></li>
-      <li><a href="https://mikemangialardi.typeform.com/to/oNoA3f">hire</a></li>
-    </ul>
-  </nav>
-</header>
+<div class="main-section-container">
+ <div class="container wrapper">
+  <div class="row">
+   <div class="col-sm-12 col-md-3 bg-dark">
+    <div class="profile-section">
+     <img class="img-fluid custom-circle rounded-circle" src="https://d3iw72m71ie81c.cloudfront.net/male-55.jpg" alt="Profile Picture">
+     <h3 class="color-primary font-weight-normal">John Doe Smith</h3>
+     <h5 class="text-muted">Web Developer</h5>
+     <hr class="small-hr">
+     <h4><i class="fa fa-user-circle-o" aria-hidden="true"></i> About</h4>
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati in blanditiis mollitia hic.</p>
+     <hr class="small-hr">
+     <h4><i class="fa fa-address-card" aria-hidden="true"></i> Contact</h4>
+     <div class="contact">
+      <div class="d-flex justify-content-between flex-wrap">
+       <p>Address:</p>
+       <p>618 Nonesuch Road <br> No Where, CA 94116</p>
+      </div>
+      <div class="d-flex justify-content-between flex-wrap">
+       <p>Phone:</p>
+       <p>(999) 999-5555</p>
+      </div>
+      <div class="d-flex justify-content-between flex-wrap">
+       <p class="mb-0">Email:</p>
+       <p class="mb-0"><a href="mailto:email@example.com">email@example.com</a></p>
+      </div>
+     </div>
+     <hr class="small-hr">
+     <h4><i class="fa fa-users" aria-hidden="true"></i> References</h4>
+     <p>Available upon request.</p>
+     <hr class="small-hr">
+     <h4><i class="fa fa-paper-plane" aria-hidden="true"></i> Interests</h4>
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat ad, quisquam. Ad amet itaque architecto quisquam blanditiis dolor ab, quae rem.</p>
+     <hr class="small-hr">
+     <h4><i class="fa fa-at" aria-hidden="true"></i> Connect</h4>
+     <ul class="list-unstyled text-muted">
+      <li><a href="#"><i class="fa fa-codepen" aria-hidden="true"></i> Codepen</a></li>
+      <li><a href="#"><i class="fa fa-github" aria-hidden="true"></i> Github</a></li>
+      <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a></li>
+      <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+     </ul>
+    </div>
+    <!-- /.profile-section -->
+   </div>
+   <!-- /.col-3 -->
 
-<div id="layout">
+   <div class="col-sm-12 col-md-9">
+    <div class="main-section">
+     <div class="skill-section">
+      <h2 class="section-title">Skills:</h2>
+      <div class="flex-container">
+       <div class="col-sm-12 col-md-6">
+        <div class="skill-unit">
+         <div class="skill-label">
+          <p>Communication</p>
+         </div>
+         <div class="skill-bar">
+          <div class="skill-amount" data-skill="50"></div>
+         </div>
+        </div>
+        <div class="skill-unit">
+         <div class="skill-label">
+          <p>Organization</p>
+         </div>
+         <div class="skill-bar">
+          <div class="skill-amount" data-skill="60"></div>
+         </div>
+        </div>
+        <div class="skill-unit">
+         <div class="skill-label">
+          <p>Learning</p>
+         </div>
+         <div class="skill-bar">
+          <div class="skill-amount" data-skill="80"></div>
+         </div>
+        </div>
+        <div class="skill-unit">
+         <div class="skill-label">
+          <p>Teaching</p>
+         </div>
+         <div class="skill-bar">
+          <div class="skill-amount" data-skill="75"></div>
+         </div>
+        </div>
+       </div>
+       <div class="col-sm-12 col-md-6">
+        <div class="skill-unit">
+         <div class="skill-label">
+          <p>Planning</p>
+         </div>
+         <div class="skill-bar">
+          <div class="skill-amount" data-skill="45"></div>
+         </div>
+        </div>
+        <div class="skill-unit">
+         <div class="skill-label">
+          <p>Visual Design</p>
+         </div>
+         <div class="skill-bar">
+          <div class="skill-amount" data-skill="50"></div>
+         </div>
+        </div>
+        <div class="skill-unit">
+         <div class="skill-label">
+          <p>UX Design</p>
+         </div>
+         <div class="skill-bar">
+          <div class="skill-amount" data-skill="35"></div>
+         </div>
+        </div>
+        <div class="skill-unit">
+         <div class="skill-label">
+          <p>Programming</p>
+         </div>
+         <div class="skill-bar">
+          <div class="skill-amount" data-skill="99"></div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <!-- /.d-flex -->
+     </div>
+     <!-- /.skill-section -->
 
-<div id="ai"> <img id="aiimg" class="animated fadeInLeft" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/3-layers.png"> </div>
+     <!-- Second section -->
+     <div class="education-section">
+      <div class="jumbotron">
+       <h2>Education:</h2>
+       <div class="flex-container text-center">
+        <div class="col-sm-12 col-md-4">
+         <canvas class="canvas" id="canvas1" data-percent="100" data-id="canvas1" width="150" height="150"></canvas>
+         <div class="astonish" data-animation="fadeInRight">
+          <h5>2012 <br>General Education</h5>
+          <h6>High School</h6>
+         </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+         <canvas class="canvas" id="canvas2" data-percent="75" data-id="canvas2" width="150" height="150"></canvas>
+         <div class="astonish" data-animation="fadeInLeft">
+          <h5>2015 <br>Information Technology Software Development</h5>
+          <h6>Community College</h6>
+         </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+         <canvas class="canvas" id="canvas3" data-percent="80" data-id="canvas3" width="150" height="150"></canvas>
+         <div class="astonish" data-animation="fadeInRight">
+          <h5>2017 <br>Information Technology Web Technologies</h5>
+          <h6>Community College</h6>
+         </div>
+        </div>
+       </div>
+       <!-- /.d-flex -->
+      </div>
+      <!-- /.jumbotron -->
+     </div>
+     <!-- /.education-section -->
 
-<div id="computer"> <img id="computerimg" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/computer.png">  </div>
-
-<div id="screen"> <img id="screenimg" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/screen.png"> </div>
-
-
-<div id="base"> <img id="baseimg" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/base.png"> </img> </div>
-
-
-<div id="bucket">
- <a href="https://codepen.io/mikemang/live/bwLgKw"> 
- <img id="bucketimg" class="animated fadeInUp" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/bucket.png"> </div>
-  </a>
-<div id="pencil"> <img id="pencilimg" class="animated fadeInRight" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/pencil.png"> </div>
-
-<div id="ruler"> <img id="rulerimg" class="animated fadeInRight" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/ruler.png"> </div>
-
-<div id="codebox">
-<a href="https://codepen.io/mikemang/live/YGkjAL"><img id="codeboximg" class="animated fadeInDown"src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/codebox.png"> </a> </div>
-
-<div id="pipe">
-  <a href="https://codepen.io/mikemang/live/dpVvNz">
- <img id="pipeimg" class="animated fadeInDown" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/pipe_copy.png"> </a> </div>
-
-
-<div id="sticky">
-<a href="  https://codepen.io/mikemang/live/wzdykm"> 
-  <img id="stickyimg" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/sticky.png"> </a> </div>
-
-<div id="clock">
-<img id="clockimg" class="animated rotateInDownLeft" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/clock.png"> </div>
-
-<div id="phone">
-<a href="https://codepen.io/mikemang/live/QKpBER"> <img id="phoneimg" class="animated infinite tada" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/phone.png"></a> </div>
-
-<div id="calc">
- <a href="https://codepen.io/mikemang/live/xEdYyb"> 
-<img id="calcimg" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/calc.png"> </a>                                 </div> 
-
+     <div class="work-section">
+      <h2 class="section-title">Work Experience:</h2>
+      <div class="col-12">
+       <div class="work">
+        <div class="d-flex justify-content-between">
+         <h5>Web Solutions Specialist</h5>
+         <h5>2016 - Present</h5>
+        </div>
+        <ul>
+         <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+         <li>Illo odit totam, quaerat numquam dolor, praesentium perferendis sunt magnam.</li>
+         <li> consequuntur optio odio nam vitae, labore architecto magni et libero officiis culpa.</li>
+        </ul>
+        <div class="d-flex justify-content-between">
+         <h5>Lorem Sales Supervisor</h5>
+         <h5>2014 - 2016</h5>
+        </div>
+        <ul>
+         <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+         <li>Illo odit totam, quaerat numquam dolor, praesentium perferendis sunt magnam.</li>
+         <li> consequuntur optio odio nam vitae, labore architecto magni et libero officiis culpa.</li>
+        </ul>
+        <div class="d-flex justify-content-between">
+         <h5>Lorem Sales Associate</h5>
+         <h5>2012 - 2014</h5>
+        </div>
+        <ul>
+         <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+         <li>Illo odit totam, quaerat numquam dolor, praesentium perferendis sunt magnam.</li>
+         <li> consequuntur optio odio nam vitae, labore architecto magni et libero officiis culpa.</li>
+        </ul>
+       </div>
+      </div>
+      <!-- /.col-12 -->
+     </div>
+     <!-- /.work-section -->
+    </div>
+    <!-- /.section -->
+   </div>
+   <!-- /.col-9 -->
+  </div>
+  <!-- /.row -->
+ </div>
+ <!-- /.container -->
 </div>
-
-<div id="desk">
-<img id="deskimg" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/desk.png">
-</div>
-
-
+<!-- /.main-section-container -->
 </body>
 </html>
