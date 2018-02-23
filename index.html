@@ -1,200 +1,456 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Marketplace
-Explore
- @ishaansharma
- Sign out
-1
-0 0 bryan-snyder/terminalHTML
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights
-terminalHTML/terminal-1.html
-34c383d  on 21 Apr 2016
-@bryan-snyder bryan-snyder first commit
-     
-176 lines (160 sloc)  5.4 KB
+<html>
+<head>
+	<style>
+		/**********************************
+GENERAL
+***********************************/
+#layout{
+  
+  max-width: 940px;
+  margin: auto;
+  padding: 0 15%;
+  display: block;
+  position: relative;
+  
+}
 
-<!--
-HTML Terminal Output
-Copyright (c) 2016 Bryan Snyder
-Do with this... whatever you want. NO Restrictions.
---> 
-<html> 
-<head> 
-<title>Bryan Snyder</title> 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
-<style type="text/css"> 
-	body {
-		background-color: #000
-	}
-	#console {
-		font-family: courier, monospace;
-		color: #fff;
-		width:750px;
-		margin-left:auto;
-		margin-right:auto;
-		margin-top:100px;
-		font-size:14px;
-	}
-	a {
-		color: #0bc;
-		text-decoration: none;
-	}
-	#a {
-		color: #0f0;
-	}
-	#c {
-		color: #0bc;
-	}
-	#b {
-		color: #ff0096;
-	}
-</style> 
-</head> 
-<body> 
-<script type="text/javascript"> 
-	var Typer={
-	text: null,
-	accessCountimer:null,
-	index:0, // current cursor position
-	speed:2, // speed of the Typer
-	file:"", //file, must be setted
-	accessCount:0, //times alt is pressed for Access Granted
-	deniedCount:0, //times caps is pressed for Access Denied
-	init: function(){// inizialize Hacker Typer
-		accessCountimer=setInterval(function(){Typer.updLstChr();},500); // inizialize timer for blinking cursor
-		$.get(Typer.file,function(data){// get the text file
-			Typer.text=data;// save the textfile in Typer.text
-			Typer.text = Typer.text.slice(0, Typer.text.length-1);
-		});
-	},
- 
-	content:function(){
-		return $("#console").html();// get console content
-	},
- 
-	write:function(str){// append to console content
-		$("#console").append(str);
-		return false;
-	},
- 
-	makeAccess:function(){//create Access Granted popUp      FIXME: popup is on top of the page and doesn't show is the page is scrolled
-		Typer.hidepop(); // hide all popups
-		Typer.accessCount=0; //reset count
-		var ddiv=$("<div id='gran'>").html(""); // create new blank div and id "gran"
-		ddiv.addClass("accessGranted"); // add class to the div
-		ddiv.html("<h1>ACCESS GRANTED</h1>"); // set content of div
-		$(document.body).prepend(ddiv); // prepend div to body
-		return false;
-	},
-	makeDenied:function(){//create Access Denied popUp      FIXME: popup is on top of the page and doesn't show is the page is scrolled
-		Typer.hidepop(); // hide all popups
-		Typer.deniedCount=0; //reset count
-		var ddiv=$("<div id='deni'>").html(""); // create new blank div and id "deni"
-		ddiv.addClass("accessDenied");// add class to the div
-		ddiv.html("<h1>ACCESS DENIED</h1>");// set content of div
-		$(document.body).prepend(ddiv);// prepend div to body
-		return false;
-	},
- 
-	hidepop:function(){// remove all existing popups
-		$("#deni").remove();
-		$("#gran").remove();
-	},
- 
-	addText:function(key){//Main function to add the code
-		if(key.keyCode==18){// key 18 = alt key
-			Typer.accessCount++; //increase counter 
-			if(Typer.accessCount>=3){// if it's presed 3 times
-				Typer.makeAccess(); // make access popup
-			}
-		}else if(key.keyCode==20){// key 20 = caps lock
-			Typer.deniedCount++; // increase counter
-			if(Typer.deniedCount>=3){ // if it's pressed 3 times
-				Typer.makeDenied(); // make denied popup
-			}
-		}else if(key.keyCode==27){ // key 27 = esc key
-			Typer.hidepop(); // hide all popups
-		}else if(Typer.text){ // otherway if text is loaded
-			var cont=Typer.content(); // get the console content
-			if(cont.substring(cont.length-1,cont.length)=="|") // if the last char is the blinking cursor
-				$("#console").html($("#console").html().substring(0,cont.length-1)); // remove it before adding the text
-			if(key.keyCode!=8){ // if key is not backspace
-				Typer.index+=Typer.speed;	// add to the index the speed
-			}else{
-				if(Typer.index>0) // else if index is not less than 0 
-					Typer.index-=Typer.speed;//	remove speed for deleting text
-			}
-			var text=Typer.text.substring(0,Typer.index)// parse the text for stripping html enities
-			var rtn= new RegExp("\n", "g"); // newline regex
-	
-			$("#console").html(text.replace(rtn,"<br/>"));// replace newline chars with br, tabs with 4 space and blanks with an html blank
-			window.scrollBy(0,50); // scroll to make sure bottom is always visible
-		}
-		if ( key.preventDefault && key.keyCode != 122 ) { // prevent F11(fullscreen) from being blocked
-			key.preventDefault()
-		};  
-		if(key.keyCode != 122){ // otherway prevent keys default behavior
-			key.returnValue = false;
-		}
-	},
- 
-	updLstChr:function(){ // blinking cursor
-		var cont=this.content(); // get console 
-		if(cont.substring(cont.length-1,cont.length)=="|") // if last char is the cursor
-			$("#console").html($("#console").html().substring(0,cont.length-1)); // remove it
-		else
-			this.write("|"); // else write it
-	}
+body {
+  font-family: 'Lato', sans-serif;
 }
- 
-function replaceUrls(text) {
-	var http = text.indexOf("http://");
-	var space = text.indexOf(".me ", http);
-	if (space != -1) { 
-		var url = text.slice(http, space-1);
-		return text.replace(url, "<a href=\""  + url + "\">" + url + "</a>");
-	} else {
-	return text
+
+#wrapper {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 5%;
+
 }
+
+a {
+  text-decoration: none;
 }
-Typer.speed=3;
-Typer.file="jeffweisbein.txt";
-Typer.init();
- 
-var timer = setInterval("t();", 30);
-function t() {
-	Typer.addText({"keyCode": 123748});
-	if (Typer.index > Typer.text.length) {
-		clearInterval(timer);
-	}
+
+img {
+  max-width: 100%;
 }
+
+h3 {
+  margin: 0 0 1em 0;
+}
+
+/**********************************
+HEADING
+***********************************/
+
+header {
+  float: left;
+  margin: 0 0 30px 0;
+  padding: 5px 0 0 0;
+  width: 100%;
+}
+
+#logo {
+  text-align: center;
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  margin: 15px 0;
+  font-size: 1.75em;
+  font-weight: normal;
+  line-height: 0.8em;
+}
+
+h2 {
+  font-size: 0.75em;
+  margin: -5px 0 0;
+  font-weight: normal;
+}
+
+#aiimg{
+  
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  top: 335px;
+  left: 345px;
+  z-index: 3; /* integer */
+}
+
+#computerimg{
+  
+  width: 650px;
+  height: 460px;
+  z-index: 3; /* integer */
+  position: absolute;
+  top: 100px;
+  left: 300px;
+
+}
+
+#baseimg{
+  
+  width: 250px;
+  height: 100px;
+  position: absolute;
+  top: 560px;
+  left: 500px;
+  z-index: 3; /* integer */
+}
+
+
+
+#screenimg{
+  
+  width: 650px;
+  height: 300px;
+  position: absolute;
+  top: 260px;
+  left: 300px;
+  z-index: 2; /* integer */
+}
+
+
+#bucketimg{
+  
+  width: 190px;
+  height: 190px;
+  position: absolute;
+  top: 361px;
+  left: 550px;
+  z-index: 3; /* integer */
+}
+
+
+#pencilimg{
+  
+  width: 50px;
+  height: 205px;
+  position: absolute;
+  top: 346px;
+  left: 830px;
+  z-index: 3; /* integer */
+}
+
+#rulerimg{
+  
+  width: 300px;
+  height: 44px;
+  position: absolute;
+  top: 270px;
+  left: 630px;
+  z-index: 3; /* integer */
+}
+
+#codeboximg{
+  
+  width: 225px;
+  height: 175px;
+  position: absolute;
+  top: 126px;
+  left: 371px;
+  z-index: 3; /* integer */
+}
+
+#pipeimg{
+  
+  width: 130px;
+  height: 135px;
+  position: absolute;
+  top: 109px;
+  left: 730px;
+  z-index: 3; /* integer */
+}
+
+#stickyimg{
+  
+  width: 130px;
+  height: 135px;
+  position: absolute;
+  top: 569px;
+  left: 60px;
+  z-index: 3; /* integer */
+}
+
+#clockimg{
+  
+  width: 120px;
+  height: 115px;
+  position: absolute;
+  top: 639px;
+  left: 300px;
+  z-index: 3; /* integer */
+}
+
+#phoneimg{
+  
+  width: 110px;
+  height: 115px;
+  position: absolute;
+  top: 655px;
+  left: 810px;
+  z-index: 3; /* integer */
+
+}
+
+#calcimg{
+  
+  width: 110px;
+  height: 140px;
+  position: absolute;
+  top: 590px;
+  left: 1050px;
+  z-index: 3; /* integer */
+  
+}
+
+#deskimg{
+  
+  width: 100%;
+  height: 390px;
+  position: absolute;
+  top: 509px;
+  left: 0px;
+   z-index: 1; /* integer */
+}
+
+
+
+/**********************************
+NAVIGATION
+***********************************/
+
+nav {
+  text-align: center;
+  padding: 10px 0;
+  margin: 20px 0 0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0 10px;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+}
+
+nav a {
+  font-weight: 800;
+  padding: 15px 10px;
+}
+
+
+
+
+/**********************************
+COLORS
+***********************************/
+
+/* site body */
+body {
+background-color: #B5E4F6;
+  color: #999;
+}
+
+/* header */
+header {
+  background: #B5E4F6;
+}
+
+/* nav background on mobile */
+nav {
+  background: #B5E4F6;
+}
+
+/* logo text */
+h1, h2 {
+  color: #fff;
+}
+
+/* links */
+a {
+  color: #6ab47b;
+}
+
+/* nav link */
+nav a, nav a:visited {
+  color: #fff;
+}
+
+/* selected nav link */
+nav a.selected, nav a:hover {
+  
+}
+
+
+/**********************************
+MEDIA QUERIES
+***********************************/
+
+@media screen and (min-width: 480px) {
+  
+  /**********************************
+  TWO COLUMN LAYOUT
+  ***********************************/
+  
+  #primary {
+    width: 50%;
+    float: left;
+  }
+  
+  #secondary {
+    width: 40%;
+    float: right;
+  }
+  
+
+  
+  /**********************************
+  PAGE: PORTFOLIO
+  ***********************************/
+  
+  #gallery li {
+    width: 28.3333%;
+  }
+  
+  #gallery li:nth-child(4n) {
+    clear: left;
+  }
+  
+@media screen and (min-width: 660px) {
+
+  /**********************************
+  HEADER
+  ***********************************/
+
+  nav {
+    background: none;
+    float: right;
+    font-size: 1.125em;
+    margin-right: 5%;
+    text-align: right;
+    width: 45%;
+  }
+  
+  #logo {
+    float: left;
+    margin-left: 5%;
+    text-align: left;
+    width: 45%;
+  }
+  
+  h1 {
+    font-size: 2em;
+  }
+  
+  h2 {
+    font-size: 0.825em;
+    margin-bottom: 20px;
+  }
+  
+  header {
  
-</script> 
-<div id="console"></div> 
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-610661-7']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-</body> 
-</html> 
-© 2018 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-API
-Training
-Shop
-Blog
-About
+    margin-bottom: 60px;
+  }
+
+  
+}
+
+	</style>
+	<script>
+		var pen = document.getElementById("pencilimg");
+
+$(document).ready(function(){
+    $(pen).click(function(){
+        $(pen).addClass("animated rollIn");
+    });
+});
+
+var pipe = document.getElementById("pipeimg");
+
+$(document).ready(function(){
+    $(pipe).click(function(){
+        $(pipe).addClass("animated rollIn");
+    });
+});
+
+var bucket = document.getElementById("bucketimg");
+
+$(document).ready(function(){
+    $(bucket).click(function(){
+        $(bucket).addClass("animated rollIn");
+    });
+});
+
+
+	</script>
+</head>
+<body>
+<!-- Invite me to Dribble: https://dribbble.com/mikemang
+Get this on GitHub: https://github.com/michaelmang/Interactive-Resume-->
+<header>
+  <a href="https://codepen.io/mikemang/#hireme" id="logo">
+    <h1 class="animated slideInLeft">michael mangialardi</h1>
+  </a>
+  <nav>
+    <ul class="animated slideInRight">
+   
+      <li><a href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/mike_mangialardi_resume.pdf" download>resume</a></li>
+      <li><a href="https://mikemangialardi.typeform.com/to/oNoA3f">hire</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div id="layout">
+
+<div id="ai"> <img id="aiimg" class="animated fadeInLeft" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/3-layers.png"> </div>
+
+<div id="computer"> <img id="computerimg" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/computer.png">  </div>
+
+<div id="screen"> <img id="screenimg" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/screen.png"> </div>
+
+
+<div id="base"> <img id="baseimg" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/base.png"> </img> </div>
+
+
+<div id="bucket">
+ <a href="https://codepen.io/mikemang/live/bwLgKw"> 
+ <img id="bucketimg" class="animated fadeInUp" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/bucket.png"> </div>
+  </a>
+<div id="pencil"> <img id="pencilimg" class="animated fadeInRight" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/pencil.png"> </div>
+
+<div id="ruler"> <img id="rulerimg" class="animated fadeInRight" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/ruler.png"> </div>
+
+<div id="codebox">
+<a href="https://codepen.io/mikemang/live/YGkjAL"><img id="codeboximg" class="animated fadeInDown"src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/codebox.png"> </a> </div>
+
+<div id="pipe">
+  <a href="https://codepen.io/mikemang/live/dpVvNz">
+ <img id="pipeimg" class="animated fadeInDown" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/pipe_copy.png"> </a> </div>
+
+
+<div id="sticky">
+<a href="  https://codepen.io/mikemang/live/wzdykm"> 
+  <img id="stickyimg" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/sticky.png"> </a> </div>
+
+<div id="clock">
+<img id="clockimg" class="animated rotateInDownLeft" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/clock.png"> </div>
+
+<div id="phone">
+<a href="https://codepen.io/mikemang/live/QKpBER"> <img id="phoneimg" class="animated infinite tada" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/phone.png"></a> </div>
+
+<div id="calc">
+ <a href="https://codepen.io/mikemang/live/xEdYyb"> 
+<img id="calcimg" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/calc.png"> </a>                                 </div> 
+
+</div>
+
+<div id="desk">
+<img id="deskimg" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/desk.png">
+</div>
+
+
+</body>
+</html>
